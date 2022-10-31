@@ -7,10 +7,10 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Jeremiah Zhou / Ja1Zhou"
+title                    : "Jay (Zhejian) Zhou / Ja1Zhou"
 title_separator          : "-"
-name                     : &name "Jeremiah Zhou"
-description              : &description "undergraduate student from school of EECS"
+name                     : &name "Jay (Zhejian) Zhou"
+description              : &description "B.S. in EE from School of EECS, Peking University"
 url                      : https://ja1zhou.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ja1zhou.github.io"
@@ -80,13 +80,13 @@ analytics:
 
 # Site Author
 author:
-  name             : "Jeremiah Zhou"
+  name             : "Jay (Zhejian) Zhou"
   avatar           : "profile_zzj.png"
-  bio              : "Undergraduate student from school of EECS"
+  bio              : "B.S. in EE from School of EECS, Peking University"
   location         : "Beijing, China"
   employer         :
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "http://scholar.google.com/this-is-a-test"
+  googlescholar    : "https://scholar.google.com/citations?user=7QSYay0AAAAJ"
   email            :
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
