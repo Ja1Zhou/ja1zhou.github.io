@@ -14,6 +14,8 @@ tags:
   - [Lewis Reconstruction Game](#lewis-reconstruction-game)
   - [log likelihood reward](#log-likelihood-reward)
   - [General Form](#general-form)
+
+
 ## Emergent Communication
 I would like to share an interesting paper accepted to `Neurips 2022` in this blog, [Emergent Communication: Generalization and Overfitting in Lewis Games](https://arxiv.org/abs/2209.15342). I have been following work on `machine-to-machine communication`, and in this paper, a framework is proposed to understand what is `optimized` in a `reference game`. 
 ### Objective Overview

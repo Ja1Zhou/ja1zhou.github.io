@@ -15,6 +15,8 @@ tags:
     - [Gumbel Distribution](#gumbel-distribution)
     - [Deriving Gumbel-Max](#deriving-gumbel-max)
   - [Putting It Together](#putting-it-together)
+
+
 ## Gumbel Softmax 
 [(original paper)](https://arxiv.org/abs/1611.01144)
 
