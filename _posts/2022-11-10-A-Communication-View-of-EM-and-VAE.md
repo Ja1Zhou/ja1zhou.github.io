@@ -35,7 +35,7 @@ It should be obvious that the `Lewis Game` is a special case of `EM-based` gener
 
 ### Derivation of EM
 #### Bringing Up the Underlying Information (Latent)
-`EM` starts with `MLE`. Suppose we have observed data $\{x_i\}_{i=1}^N$, and that $x\sim p(x)$ where $p(x)$ is the underlying distribution. We aim to fit a distribution parameterized on $\theta$ to describe $p(x)$:
+`EM` starts with `MLE`. Suppose we have observed data $x$, and that $x\sim p(x)$ where $p(x)$ is the underlying distribution. We aim to fit a distribution parameterized on $\theta$ to describe $p(x)$:
 
 $$\theta_{MLE}=\argmax_{\theta}\sum_{i=1}^{N}\log P(x_i|\theta) =\argmax_{\theta}\log P(\bold x|\theta) \\
 x_i\overset{\text{i.i.d}}{\sim}p(x)$$
@@ -45,7 +45,7 @@ Traditionally, we introduce the idea of `latent vector` to help approximate $p(x
 
 $$p(x_i|\theta)=\int_{z_i}p(x_i,z_i|\theta)dz_i=\int_{z_i}p(x_i|z_i,\theta)p(z_i|\theta)dz_i$$
 
-Suppose that $z$ can be sufficiently and more easily described by $\theta$, it follows that iterating all possible `essential information` $z$ and `decoding` it back to $x$ would give us the distribution of $x$. Therefore, the crucial assumption here is that $p(x|\theta)$ is redundant, and could be instead sufficiently describe using $p(z|\theta)$.
+Suppose that $z$ can be sufficiently and more easily described by $\theta$, it follows that iterating all possible `essential information` $z$ and `decoding` it back to $x$ would give us the distribution of $x$. Therefore, the crucial assumption here is that $p(x\|\theta)$ is redundant, and could be instead sufficiently describe using $p(z\|\theta)$.
 
 For simplicity, we omit the `\bold` command in formulas. To learn $z$ well, we need to introduce interaction between $z$ and $x$. Generally, we have
 
@@ -55,7 +55,7 @@ $p(z|x, \theta)$ `encodes` the inputs to `information`.
 
 `Expectation` over $z$ would not impact $x$. Moreover, we would like to derive an `iterative optimization`. To this end, it may be reasonable to perform an expectation over $p(z|x, \theta^{(t)})$. Note that for the left hand side, expectation over $z$ does not have an impact on $x$. It is still $\log p(x|\theta)$. 
 
-$$\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(x|\theta)\right]=\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(x,z|\theta)\right]-\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(z|x,\theta)\right]\\=Q(\theta,\theta^{(t)})-K(\theta,\theta^{(t)})$$
+$$\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(x|\theta)\right]=\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(x,z|\theta)\right]-\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(z|x,\theta)\right]\\ =Q(\theta,\theta^{(t)})-K(\theta,\theta^{(t)})$$
 
 Obviously, for $\forall \theta$, we have 
 
