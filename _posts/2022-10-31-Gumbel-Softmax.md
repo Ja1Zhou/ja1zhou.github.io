@@ -43,13 +43,16 @@ $$P(\argmax_i(\log p_i - \log(-\log\varepsilon_i))==j) = p_j$$
 **Merit**: The parameters of the underlying distribution now appear explicitly in the sampling process. Moreover, the sampling process is transferred to $\varepsilon$.
 #### Gumbel Distribution
 Let us inspect the distribution of 
+
 $$\xi = -\log(-\log\varepsilon),\ \varepsilon\sim\mathcal{U}(0,1)$$
+
 Its density function can be derived as 
 
 $$F(X) = P(\xi \leq X) = P(-\log(-\log\varepsilon)\leq X)\\
 = P(-\log \varepsilon \geq \exp(-X)) = P(\varepsilon\leq\exp(-\exp(-X)))\\
 =\exp(-\exp(-X))
 $$
+
 #### Deriving Gumbel-Max
 Denote $\log p_i-\log(-\log\varepsilon_i)$ as $\mathbb{G}(i)$.
 
@@ -73,11 +76,15 @@ $$
 $\Rightarrow$
 
 $$\prod_iP(\mathbb{G}(j)\geq\mathbb{G}(i)|\varepsilon_j =\hat\varepsilon_j) = \hat\varepsilon_j^{\frac{\sum_ip_i}{p_j}} = \hat\varepsilon_j^{\frac{1-p_j}{p_j}}$$
+
 $\Rightarrow$
+
 $$P(\mathbb{G}(j)\geq\mathbb{G}(i)) = \int_0^1 d\hat\varepsilon_j\ \hat\varepsilon_j^{\frac{1-p_j}{p_j}} = p_j\varepsilon^{\frac{1}{p_j}}|_{\varepsilon=0}^1 = p_j$$
+
 Therefore, sampling from arbitrary categorical distribution can be  reparameterized to sampling from Gumbel distribution. 
 ### Putting It Together
 Recall that sampling from arbitrary categorical distribution can be reparameterized as sampling $\varepsilon_i$ from Gumbel distribution. 
+
 $$\argmax_i(\log p_i - \log(-\log\varepsilon_i)),\ \varepsilon_i\ i.i.d.\sim\mathcal{U}(0, 1)$$
 
 To tackle the problem underlying discrete optimization, we would like to approximate `discrete operations` with continuous operations, such that gradients flow back to the parameters that the sampled distribution is conditioned on (Here, $p_i$). 
@@ -85,6 +92,7 @@ To tackle the problem underlying discrete optimization, we would like to approxi
 It is intuitive that by replacing `argmax` with `softmax`, we would obtain a continuous approximation where gradients to distribution parameter $p_i$ are well defined. Moreover, by annealing the temperature to 0, the `softmax` operation would approach `argmax` in both sampled value and expectation value.
 
 In the computation graph, we can replace the intended sampled values with:
+
 $$\sum_i\frac{v_i\cdot \exp((\log p_i- \log(-\log\varepsilon_i))/\tau)}{\sum_j \exp((\log p_j- \log(-\log\varepsilon_j))/\tau)}$$
 
 This approach basically alleviates the sampling process by resorting to `expectation values`.

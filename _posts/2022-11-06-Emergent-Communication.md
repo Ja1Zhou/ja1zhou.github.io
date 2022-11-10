@@ -1,7 +1,7 @@
 ---
 title: 'Emergent Communication'
-date: 2022-10-31
-permalink: /posts/2022/10/Emergent-Communication/
+date: 2022-11-06
+permalink: /posts/2022/11/Emergent-Communication/
 tags:
   - Math
   - NLP
@@ -39,6 +39,7 @@ $$\min_\phi \mathcal{L}_{\theta,\phi} \Leftrightarrow\min_\phi \int\int \rho_{\p
 $$\rho_{\phi^*}(\cdot|m)=\rho^\theta(\cdot|m) = \frac{p_X(x)\pi_\theta(m|x)}{\mathbb{E}_{x'\sim p}\ p_X(x')\pi_\theta(m|x')}$$
 
 If we rewrite $r_\phi(x, m) = r^\theta(x, m) + r_\phi(x, m) - r^\theta(x, m)$, we'll have
+
 $$\mathcal{L}_{\theta, \phi} = \underbrace{\mathcal{H}(X|M_\theta)}_{\mathcal{L}_\text{info}} + \underbrace{\mathbb{E}_{m\sim\pi_\theta }D_{KL}(\rho^\theta(\cdot|m)||\rho_\phi(\cdot|m))}_{\mathcal{L}_{\text{adapt}}}$$
 
 ### General Form
