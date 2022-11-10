@@ -19,6 +19,7 @@ tags:
 ## Emergent Communication
 I would like to share an interesting paper accepted to `Neurips 2022` in this blog, [Emergent Communication: Generalization and Overfitting in Lewis Games](https://arxiv.org/abs/2209.15342). I have been following work on `machine-machine communication`, and in this paper, a framework is proposed to understand what is `optimized` in a `reference game`. 
 ### Objective Overview
+
 $$\mathcal{L}_{\theta, \phi} = \underbrace{\mathcal{H}(X|M_\theta)}_{\mathcal{L}_\text{info}} + \underbrace{\mathbb{E}_{m\sim\pi_\theta }D_{KL}(\rho^\theta(\cdot|m)||\rho_\phi(\cdot|m))}_{\mathcal{L}_{\text{adapt}}}$$
 
 We'll dive into the details later. As it turns out, in a  categorical reference game with typical `log likelihoods`, the loss function $\mathcal{L}$ can be decomposed into 
