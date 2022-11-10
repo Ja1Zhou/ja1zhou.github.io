@@ -37,7 +37,7 @@ It should be obvious that the `Lewis Game` is a special case of `EM-based` gener
 #### Bringing Up the Underlying Information (Latent)
 `EM` starts with `MLE`. Suppose we have observed data $x$, and that $x\sim p(x)$ where $p(x)$ is the underlying distribution. We aim to fit a distribution parameterized on $\theta$ to describe $p(x)$:
 
-$$\theta_{MLE}=\argmax_{\theta}\sum_{i=1}^{N}\log P(x_i|\theta) =\argmax_{\theta}\log P(\bold x|\theta) \\
+$$\theta_{MLE}=\argmax_{\theta}\sum_{i=1}^{N}\log P(x_i|\theta) =\argmax_{\theta}\log P(\mathbf{x}|\theta) \\
 x_i\overset{\text{i.i.d}}{\sim}p(x)$$
 
 
@@ -47,21 +47,22 @@ $$p(x_i|\theta)=\int_{z_i}p(x_i,z_i|\theta)dz_i=\int_{z_i}p(x_i|z_i,\theta)p(z_i
 
 Suppose that $z$ can be sufficiently and more easily described by $\theta$, it follows that iterating all possible `essential information` $z$ and `decoding` it back to $x$ would give us the distribution of $x$. Therefore, the crucial assumption here is that $p(x\|\theta)$ is redundant, and could be instead sufficiently describe using $p(z\|\theta)$.
 
-For simplicity, we omit the `\bold` command in formulas. To learn $z$ well, we need to introduce interaction between $z$ and $x$. Generally, we have
+For simplicity, we omit the `\mathbf` command in formulas. To learn $z$ well, we need to introduce interaction between $z$ and $x$. Generally, we have
 
 $$p(x|\theta)=\frac{p(x,z|\theta)} {p(z|x,\theta)}$$
 
-$p(z|x, \theta)$ `encodes` the inputs to `information`. 
+$p(z\|x, \theta)$ `encodes` the inputs to `information`. 
 
-`Expectation` over $z$ would not impact $x$. Moreover, we would like to derive an `iterative optimization`. To this end, it may be reasonable to perform an expectation over $p(z|x, \theta^{(t)})$. Note that for the left hand side, expectation over $z$ does not have an impact on $x$. It is still $\log p(x|\theta)$. 
+`Expectation` over $z$ would not impact $x$. Moreover, we would like to derive an `iterative optimization`. To this end, it may be reasonable to perform an expectation over $p(z\|x, \theta^{(t)})$. Note that for the left hand side, expectation over $z$ does not have an impact on $x$. It is still $\log p(x\|\theta)$. 
 
-$$\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(x|\theta)\right]=\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(x,z|\theta)\right]-\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(z|x,\theta)\right]\\ =Q(\theta,\theta^{(t)})-K(\theta,\theta^{(t)})$$
+$$\begin{aligned}\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(x|\theta)\right]&=\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(x,z|\theta)\right]-\mathbb{E}_{p(z|x,\theta^{(t)})}\left[\log p(z|x,\theta)\right]\\ &=Q(\theta,\theta^{(t)})-K(\theta,\theta^{(t)})
+\end{aligned}$$
 
 Obviously, for $\forall \theta$, we have 
 
 $$\begin{aligned}K(\theta,\theta^{(t)}) &= -D_{KL}(p(z|x,\theta^{(t)})||p(z|x,\theta)) - H(p(z|x,\theta^{(t)}))\\ &\le K(\theta^{(t)},\theta^{(t)})\end{aligned}$$
 
-Where $H(p(z|x,\theta^{(t)})$ denotes the entropy. Suppose we can calculate $\theta^{(t+1)}$ as: 
+Where $H(p(z\|x,\theta^{(t)})$ denotes the entropy. Suppose we can calculate $\theta^{(t+1)}$ as: 
 
 $$\argmax_{\theta}Q(\theta,\theta^{(t)})$$
 
@@ -73,7 +74,7 @@ Therefore, we have to calculate
 
 $$\theta^{(t+1)}=\argmax_\theta\int_z\log p(x,z|\theta)\cdot p(z|x,\theta^{(t)})dz$$
 
-It seems that no `estimation` is present. Yet, the above scenario is solvable based on strong inductive bias (i.e. GMM), which is essentially `estimation`. Here, $p(x,z|\theta)$ is tractable through $p(z|\theta)\cdot p(x|z, \theta)$. $p(z|x, \theta^{(t)})$ also has closed form. 
+It seems that no `estimation` is present. Yet, the above scenario is solvable based on strong inductive bias (i.e. GMM), which is essentially `estimation`. Here, $p(x,z\|\theta)$ is tractable through $p(z\|\theta)\cdot p(x\|z, \theta)$. $p(z\|x, \theta^{(t)})$ also has closed form. 
 
 #### Explicit `E-Step` and `M-Step`
 It is not always tractable to give a closed-form distribution of $p(z|x,\theta^{(t)})$ and $p(x|z, \theta)$, say that we implicitly `estimate` them using neural nets $p(x|z, \theta):\text{decoder}$ and $q(z|x, \phi):\text{encoder}$. Intuitively, they match the `speaker` and `listener` in reference games. We instead get:
@@ -100,7 +101,7 @@ Together, we have:
 
 $$\begin{aligned}\log p(x|\theta)&=\mathbb{E}_{q(z|x,\phi)}\left[ \log p(x|z,\theta) \right] + D_{KL}\left(q(z|x,\phi)||p(z|x,\theta)\right)\\&-D_{KL}\left( q(z|x,\phi)||p(z|\theta) \right)\end{aligned}$$
 
-What is worth noticing is that although $D_{KL}\left(q(z|x,\phi)||p(z|x,\theta)\right)$ is positive, in `EM` implementation, we are actually minimizing it.
+What is worth noticing is that although $D_{KL}\left(q(z\|x,\phi)\|\|p(z\|x,\theta)\right)$ is positive, in `EM` implementation, we are actually minimizing it.
 
 Here, I deviate in details from other deductions, such as [Understanding Diffusion Models: A Unified Perspective](https://arxiv.org/abs/2208.11970). But a strikingly similar formula in it is derived from the perspective of maximizing `ELBO` alone, and under the setting of `hierarchical VAEs`. The way I put it is:
 
@@ -112,11 +113,11 @@ What I like about this (probably) new view is that the terms are more intuive:
 
 $$\begin{cases}\mathbb{E}_{q(z|x,\phi)}\left[ \log p(x|z,\theta) \right]\rightarrow\text{reconstruction (information)}\\D_{KL}\left(q(z|x,\phi)||p(z|x,\theta)\right)\rightarrow\text{consistency (commonsense)}\\D_{KL}\left( q(z|x,\phi)||p(z|\theta) \right)\rightarrow\text{priori (explicability; protocol?)}\end{cases}$$
 
-First, $\mathbb{E}_{q(z|x,\phi)}\left[ \log p(x|z,\theta) \right]$. It essentially measures how well models can reconstruct the original distribution in its `full form (x)` using just the communicated `information (z)`.
+First, $\mathbb{E}_{q(z\|x,\phi)}\left[ \log p(x\|z,\theta) \right]$. It essentially measures how well models can reconstruct the original distribution in its `full form (x)` using just the communicated `information (z)`.
 
-Second, $D_{KL}\left(q(z|x,\phi)||p(z|x,\theta)\right)$. It essentially tries to align the `listener`'s and the `speaker`'s understanding of information `z`. Or, if we use a fancy term, `commomsense`. This is crucial to research. Basically, $z$ here is `natural languages` for us humans. natural languages are symbolic and compresses information. That we share the same `commomsense` makes sure that we can communicate effectively. 
+Second, $D_{KL}\left(q(z\|x,\phi)\|\|p(z\|x,\theta)\right)$. It essentially tries to align the `listener`'s and the `speaker`'s understanding of information `z`. Or, if we use a fancy term, `commomsense`. This is crucial to research. Basically, $z$ here is `natural languages` for us humans. natural languages are symbolic and compresses information. That we share the same `commomsense` makes sure that we can communicate effectively. 
 
-Finally, $D_{KL}\left( q(z|x,\phi)||p(z|\theta) \right)$. This term explicitly matches the priori we set for $z$ (eg. Gaussian distribution in VAEs). Through this term, we enforce desired properties onto the latent variable (or `information`) $z$ . More importantly, this term could be interpreted as imposing constraints on `interpretability`, especially in the case of communication. The priori distribution that we definitely intend to match is that of `natural language`. One step further, under the scenario of `machine-machine communication` and `multi-agent collaboration`, $p(z|\theta)$ could be understood as a `protocol`. It follows that by encouraging `minimal` yet `sufficient commonsense`, a decent `protocol` should emerge. 
+Finally, $D_{KL}\left( q(z\|x,\phi)\|\|p(z\|\theta) \right)$. This term explicitly matches the priori we set for $z$ (eg. Gaussian distribution in VAEs). Through this term, we enforce desired properties onto the latent variable (or `information`) $z$ . More importantly, this term could be interpreted as imposing constraints on `interpretability`, especially in the case of communication. The priori distribution that we definitely intend to match is that of `natural language`. One step further, under the scenario of `machine-machine communication` and `multi-agent collaboration`, $p(z\|\theta)$ could be understood as a `protocol`. It follows that by encouraging `minimal` yet `sufficient commonsense`, a decent `protocol` should emerge. 
 
 ### Cite this blog
 ```latex
