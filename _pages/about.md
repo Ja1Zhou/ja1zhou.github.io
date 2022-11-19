@@ -17,14 +17,25 @@ My research goal is to empower AI to **interact**. Current models function more 
 Publications
 ======
 **ConFiguRe: Exploring Discourse-level Chinese Figures of Speech**
+
 Dawei Zhu, Qiusi Zhan, **Zhejian Zhou**, Yifan Song, Jiebin Zhang, Sujian Li
-<em>COLING'22 (Oral)</em> 
+
+<em>COLING'22 (Oral)
 [![ACLAnthology](https://img.shields.io/badge/ACL_Anthology-red)](https://aclanthology.org/2022.coling-1.298/) [![CofigureRepo](https://img.shields.io/badge/code-blue)](https://github.com/PKU-TANGENT/ConFiguRe)
 
 **Performance of Hybrid Satellite-Terrestrial Relay Systems Using Non-Orthogonal Multiple Access**
+
 Xifan Chen, **Zhejian Zhou**, Yifeng Jin, Xunan Li, Guocheng Lv
+
 <em>CCISP'21</em> 
 [![IEEE](https://img.shields.io/badge/IEEE-blue)](https://ieeexplore.ieee.org/abstract/document/9639369/)
+
+Awards
+======
+* **Outstanding Graduate** in Beijing (top 5%)
+* **Outstanding Graduate** at Peking University
+* **Outstanding Undergraduate Research Project** at Peking University
+* **Award for Scientific Research** at Peking University
 
 Repos
 ======
@@ -35,3 +46,9 @@ Repos
 [![gpu_raspberrypi](https://github-readme-stats.vercel.app/api/pin/?username=ja1zhou&repo=gpu_support_for_pytorch_on_raspberry_pi_3b)](https://github.com/Ja1Zhou/GPU_support_for_Pytorch_on_Raspberry_Pi_3B)
 
 [![hgf_codebase](https://github-readme-stats.vercel.app/api/pin/?username=pku-tangent&repo=huggingface_codebase)](https://github.com/PKU-TANGENT/Huggingface_Codebase)
+
+MISC
+======
+* I play the piano from a very young age
+* I spent a year (2007-2008) at [Purchase Elementary](https://pur.harrisoncsd.org/), Harrison, NY
+* I am previously one of the organizers of the [**PKU Night Run (夜奔)**](https://www.bilibili.com/video/BV1FX4y1G7H8?p=20)
