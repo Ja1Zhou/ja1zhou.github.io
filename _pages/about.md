@@ -14,6 +14,10 @@ Hi 👋, I'm Jay (Zhejian) Zhou. I am originally from Shanghai, China. I receive
 
 My research goal is to empower AI to **interact**. Current models function more as **static pattern recognizers** of a specific data type. To this end, I believe models should better interact with 1) the world 2) humans 3) machines. Therefore, I am interested in areas of **1) multimodal learning 2) human-in-the-loop training 3) machine-machine communication**.
 
+Checkout my recent blogs!
+* [Contrastive Loss is the Final Piece in Generation](https://ja1zhou.github.io/posts/2022/11/Contrastive-Loss-is-the-Final-Piece-in-Generation/)
+* [Viewing EM-Style Generation as Communication](https://ja1zhou.github.io/posts/2022/11/Viewing-EM-Style-Generation-as-Communication/)
+
 Publications
 ======
 **ConFiguRe: Exploring Discourse-level Chinese Figures of Speech**
