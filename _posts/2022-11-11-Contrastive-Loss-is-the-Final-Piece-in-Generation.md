@@ -67,7 +67,7 @@ $$\begin{aligned}EM&\Leftrightarrow\max [\mathbb{E}_{q(z|x,y, \phi)}\left[ \log 
 
 Now if we impose no priori on $p(z)$, and only optimize the $D_{KL}$ term in the first stage, and suppose the the computation graph is as illustrated, we have:
 
-![CL](../files/CL.png)
+![CL](/images/CL.png)
 
 $$\Leftrightarrow \min D_{KL}\left(q(z|x,\phi)||p(z'|y,\theta)\right) =\min H(Q, P) - H(Q)\\ (H(Q, P) = -\int Q\log P)$$
 
