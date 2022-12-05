@@ -8,11 +8,9 @@ redirect_from:
   - /about.html
 ---
 
-Bio
-======
 Hi 👋, I'm Jay (Zhejian) Zhou. I am originally from Shanghai, China. I received my B.S. in EE from School of EECS, Peking University and my advisor is [Prof. Sujian Li](https://pku-tangent.github.io).
 
-My research goal is to empower AI to **interact**. Current models function more as **static pattern recognizers** of a specific data type. To this end, I believe models should better interact with 1) the world 2) humans 3) machines. Therefore, I am interested in areas of **1) multimodal learning 2) human-in-the-loop training 3) machine-machine communication**.
+Inspired by the [**embodied AI**](https://embodied-ai.org/), I believe models ought to better **perceive** and **interact** with the environment, to better **reason** and act as an intelligent being, so as to push towards more **general intelligence**. To this end, I am interested in two respective research areas. First, I intend to boost perception and interaction by working on **multi-modal learning**. Second, I wish to improve reasoning by working on **symbolic structure generation**. 
 
 Checkout my recent blogs!
 * [Contrastive Loss is the Final Piece in Generation](https://ja1zhou.github.io/posts/2022/11/Contrastive-Loss-is-the-Final-Piece-in-Generation/)
