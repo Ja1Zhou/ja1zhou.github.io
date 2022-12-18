@@ -57,14 +57,14 @@ $$
 The expected color along the ray:
 
 $$
-\int_{t_0}^{t_{n+1}}T(t)\sigma(t)\bm c(t)dt
+\int_{t_0}^{t_{n+1}}T(t)\sigma(t)\mathbf{c}(t)dt
 $$
 
 ### Approximation
-Note the nested integration (another inside $T(t)$). Approximate the outside integration assuming local consistency ($\sigma$ and $\bm c$ remains constant).
+Note the nested integration (another inside $T(t)$). Approximate the outside integration assuming local consistency ($\sigma$ and $\mathbf{c}$ remains constant).
 
 $$
-\int_{t_0}^{t_{n+1}} T(t)\sigma(t)\bm c(t)dt \approx \sum_{i=0}^n\int_{t_i}^{t_{i+1}}T(t)\sigma_i\bm c_i dt
+\int_{t_0}^{t_{n+1}} T(t)\sigma(t)\mathbf{c}(t)dt \approx \sum_{i=0}^n\int_{t_i}^{t_{i+1}}T(t)\sigma_i\mathbf{c}_i dt
 $$
 
 Let $\delta_i = t_{i+1}-t_i$
@@ -83,11 +83,11 @@ $\Rightarrow$
 
 $$
 \begin{aligned}
-\int_{t_0}^{t_{n+1}} T(t)\sigma(t)\bm c(t)dt &\approx \sum_{i=0}^n\int_{t_i}^{t_{i+1}}T(t)\sigma_i\bm c_i dt \\
-&=\sum_{i=0}^n T_i\sigma_i\bm c_i\int_{t_{i}}^{t_{i+1}}\exp(-\sigma_{i}(t-t_i))dt \\
-&=\sum_{i=0}^n T_i\sigma_i\bm c_i \frac{\exp (-\sigma_i(t_{i+1}-t_i))-1}{-\sigma_i} \\
-&=\sum_{i=0}^n T_i\bm c_i \underbrace{(1-\exp(-\sigma_i\delta_i))}_{\text{opacity } \alpha_i} \\
-&=\sum_{i=0}^n T_i\bm c_i\alpha_i
+\int_{t_0}^{t_{n+1}} T(t)\sigma(t)\mathbf{c}(t)dt &\approx \sum_{i=0}^n\int_{t_i}^{t_{i+1}}T(t)\sigma_i\mathbf{c}_i dt \\
+&=\sum_{i=0}^n T_i\sigma_i\mathbf{c}_i\int_{t_{i}}^{t_{i+1}}\exp(-\sigma_{i}(t-t_i))dt \\
+&=\sum_{i=0}^n T_i\sigma_i\mathbf{c}_i \frac{\exp (-\sigma_i(t_{i+1}-t_i))-1}{-\sigma_i} \\
+&=\sum_{i=0}^n T_i\mathbf{c}_i \underbrace{(1-\exp(-\sigma_i\delta_i))}_{\text{opacity } \alpha_i} \\
+&=\sum_{i=0}^n T_i\mathbf{c}_i\alpha_i
 \end{aligned}
 $$
 
@@ -99,7 +99,7 @@ $$
 In the previous section, we are basically saying that 
 
 $$
-\text{color} = \sum_{i=0}^n T_i\bm c_i\alpha_i
+\text{color} = \sum_{i=0}^n T_i\mathbf{c}_i\alpha_i
 $$
 
-By replacing $\bm c(t)$, we can render other quantities of interest.
+By replacing $\mathbf{c}(t)$, we can render other quantities of interest.
