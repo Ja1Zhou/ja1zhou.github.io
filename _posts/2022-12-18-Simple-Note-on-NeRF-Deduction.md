@@ -1,6 +1,6 @@
 ---
 title: 'Simple Note on NeRF Deduction'
-date: 2022-11-11
+date: 2022-12-18
 permalink: /posts/2022/12/Simple-Note-on-NeRF-Deduction/
 tags:
   - Math
