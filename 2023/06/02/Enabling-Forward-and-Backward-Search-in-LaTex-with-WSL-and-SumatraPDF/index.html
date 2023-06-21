@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Jay Zhou">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2023/06/02/enabling-forward-and-backward-search-in-latex-with-wsl-and-sumatrapdf/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="Versions Rough Intro to Setting-Up  Installing Tex Live 2023 in WSL  WSL VSCode settings.json Setting-up Symbolic Link on Windows Filesystem  Steps  rpsync.sh and forward.sh  rpsync.sh forward.sh Put">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Enabling Forward and Backward Search in LaTex with WSL and SumatraPDF">
+<meta property="og:url" content="http://example.com/2023/06/02/Enabling-Forward-and-Backward-Search-in-LaTex-with-WSL-and-SumatraPDF/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Versions Rough Intro to Setting-Up  Installing Tex Live 2023 in WSL  WSL VSCode settings.json Setting-up Symbolic Link on Windows Filesystem  Steps  rpsync.sh and forward.sh  rpsync.sh forward.sh Put">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-06-02T02:26:57.000Z">
+<meta property="article:modified_time" content="2023-06-19T14:15:15.583Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="WSL">
+<meta property="article:tag" content="LaTex">
+<meta property="article:tag" content="SumatraPDF">
+<meta name="twitter:card" content="summary">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Enabling Forward and Backward Search in LaTex with WSL and SumatraPDF -
+        
+        Jay&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/assets/fonts.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    let Global = window.Global || {};
+    Global.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"busuanzi_counter":{"enable":false,"site_pv":false,"site_uv":false,"post_pv":false},"pjax":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"static","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Welcome to Jay's Blog","subtitle":{"text":[],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/Ja1Zhou","instagram":null,"zhihu":null,"twitter":null,"email":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.5","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
+    Global.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    Global.data_config = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="main-content-container">
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+    
+    <div class="navbar-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Jay&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        HOME
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                HOME
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">Enabling Forward and Backward Search in LaTex with WSL and SumatraPDF</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/uploads/icon.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Jay Zhou</span>
+                            
+                                <span class="author-label">Lv1</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-06-02 10:26:57</span>
+        <span class="mobile">2023-06-02 10:26</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-06-19 22:15:15</span>
+            <span class="mobile">2023-06-19 22:15</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/WSL/">WSL</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/LaTex/">LaTex</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/SumatraPDF/">SumatraPDF</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <ul>
+<li><a href="#versions">Versions</a></li>
+<li><a href="#rough-intro-to-setting-up">Rough Intro to Setting-Up</a>
+<ul>
+<li><a href="#installing-tex-live-2023-in-wsl">Installing Tex Live 2023
+<strong>in WSL</strong></a></li>
+</ul></li>
+<li><a href="#wsl-vscode-settingsjson">WSL VSCode
+<code>settings.json</code></a></li>
+<li><a href="#setting-up-symbolic-link-on-windows-filesystem">Setting-up
+Symbolic Link on <strong>Windows Filesystem</strong></a>
+<ul>
+<li><a href="#steps">Steps</a></li>
+</ul></li>
+<li><a href="#rpsyncsh-and-forwardsh"><code>rpsync.sh</code> and
+<code>forward.sh</code></a>
+<ul>
+<li><a href="#rpsyncsh"><code>rpsync.sh</code></a></li>
+<li><a href="#forwardsh"><code>forward.sh</code></a></li>
+<li><a href="#putting-them-in-place">Putting them in place</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<p>The tweak in this repo is somewhat sophisticated. Advice on
+simplification is welcome.</p>
+<p>The motivation is to combine the blazing-fast tex compilation on WSL
+with seamless forward and backward search experience.</p>
+<h2 id="versions">Versions</h2>
+<p>The solution is valid undering these settings (64 bit version by
+default)</p>
+<ul>
+<li>Windows 11 22H2</li>
+<li>WSL Ubuntu 22.04.2 LTS</li>
+<li>VSCode version 1.78.2</li>
+<li>SumatraPDF v3.4.6</li>
+<li>TeX Live 2023</li>
+<li>LaTex Workshop Plugin v9.11.4</li>
+</ul>
+<h2 id="rough-intro-to-setting-up">Rough Intro to Setting-Up</h2>
+<p>I am going to skip installing WSL, VSCode and SumatraPDF on Windows,
+as this step is relatively simple. Things to notice:</p>
+<ol type="1">
+<li>SumatraPDF is simply installed on Windows, no special care
+needed</li>
+<li>Make sure to install the <a class="link" 
+ target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl" >WSL
+extension <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>, and also the <a class="link" 
+ target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop" >LaTex
+Workshop extension <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> <strong>in WSL</strong></li>
+</ol>
+<h3 id="installing-tex-live-2023-in-wsl">Installing Tex Live 2023
+<strong>in WSL</strong></h3>
+<p>It should be stressed that Tex Live is <strong>installed on
+WSL</strong>. The steps here refer to the section of WSL in <a class="link" 
+ target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.pdf" >this
+document <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<ol type="1">
+<li>Download full Tex Live ISO from mirror or torrent</li>
+<li>Double click on the ISO in File Explorer to be mounted on the
+<strong>Windows System</strong>. Check the name of the mounted image
+(eg. <code>U:\</code>, <code>F:\</code>), suppose that it is
+<code>U:\</code></li>
+<li>Inside <strong>WSL terminal</strong> <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pkg needed later</span></span><br><span class="line">sudo apt install fontconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># for installing texlive on wsl</span></span><br><span class="line">sudo <span class="built_in">mkdir</span> /mnt/x</span><br><span class="line">sudo mount -t drvfs U: /mnt/x</span><br><span class="line"></span><br><span class="line"><span class="comment"># actual installation</span></span><br><span class="line">sudo /mnt/x/install-tl</span><br><span class="line"></span><br><span class="line"><span class="comment"># Follow instructions that pops up</span></span><br></pre></td></tr></table></figure></div></li>
+<li>Cleaning up <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /mnt/x</span><br><span class="line">sudo <span class="built_in">rmdir</span> /mnt/x</span><br></pre></td></tr></table></figure></div></li>
+<li>Handle <code>PATH</code> variable. Append this fragment to your
+favorate <code>profile</code> (eg. <code>.profile</code>,
+<code>.bashrc</code>) using your favorate editor <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TEX related</span></span><br><span class="line"><span class="built_in">export</span> PATH=/usr/local/texlive/2023/bin/x86_64-linux<span class="variable">$&#123;PATH:+:<span class="variable">$&#123;PATH&#125;</span>&#125;</span></span><br><span class="line"><span class="built_in">export</span> MANPATH=/usr/local/texlive/2023/texmf-dist/doc/man<span class="variable">$&#123;MANPATH:+:<span class="variable">$&#123;MANPATH&#125;</span>&#125;</span></span><br><span class="line"><span class="built_in">export</span> INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/info<span class="variable">$&#123;INFOPATH:+:<span class="variable">$&#123;INFOPATH&#125;</span>&#125;</span></span><br></pre></td></tr></table></figure></div></li>
+<li>Handle fonts <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /usr/local/texlive/2023/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-</span><br><span class="line">texlive.conf</span><br><span class="line">sudo fc-cache -fsv</span><br></pre></td></tr></table></figure></div></li>
+</ol>
+<h2 id="wsl-vscode-settings.json">WSL VSCode
+<code>settings.json</code></h2>
+<p>Note:</p>
+<ol type="1">
+<li>This is different from the <code>settings.json</code> for Windows
+VSCode. The file is located at
+<code>/home/&lt;ur_usrname&gt;/configs/vscode/settings.json</code></li>
+<li>Change <code>&lt;ur_usrname&gt;</code> to your WSL username</li>
+<li><code>/home/&lt;ur_usrname&gt;/.local/bin</code> can be replaced
+with arbitrary path, it is just my convention here. Stick to using abs
+path.</li>
+<li><code>forward.sh</code> and <code>backward.sh</code> are the two
+utility scripts that are used to forward and backward search. They are
+explained in the next section.</li>
+<li>The <code>rpsync.sh</code> is a utility script that is used to
+modify synctex file</li>
+<li>Attend to the comments in the json file should you have
+questions</li>
+<li>After you have setup <code>settings.json</code>, you should be able
+to compile and run simple LaTex documents. At this stage, resort to the
+<code>simple</code> recipe that only uses one call to
+<code>xelatex</code>. Switch to using <code>xelatex</code> recipe after
+completing the following section on <code>forward.sh</code> and
+<code>rpsync.sh</code> <div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;latex-workshop.latex.autoClean.run&quot;</span><span class="punctuation">:</span> <span class="string">&quot;onBuilt&quot;</span><span class="punctuation">,</span> <span class="comment">//autoclean</span></span><br><span class="line">    <span class="attr">&quot;latex-workshop.latex.recipes&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="comment">// recipes are called on build signal. The tools are called in order with parameters specified in the next section. The order of recipes specifies default recipe</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;tools&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;rpsync&quot;</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;simple&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;tools&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex default&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;tools&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;biber&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pdflatex -&gt; bibtex -&gt; pdflatex*2&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;tools&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;pdflatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;bibtex&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;pdflatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;pdflatex&quot;</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;latex-workshop.latex.tools&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="comment">// specifies parameters for tools</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;-synctex=1&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-interaction=nonstopmode&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-file-line-error&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;%DOC%&quot;</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;latexmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;latexmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;-synctex=1&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-interaction=nonstopmode&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-file-line-error&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-pdf&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;%DOC%&quot;</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pdflatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pdflatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;-synctex=1&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-interaction=nonstopmode&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-file-line-error&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;%DOC%&quot;</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bibtex&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bibtex&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;%DOCFILE%&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;biber&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;biber&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;%DOCFILE%&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rpsync&quot;</span><span class="punctuation">,</span> <span class="comment">// utility script for synctex,  explained later</span></span><br><span class="line"><span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/home/&lt;ur_usrname&gt;/.local/bin/rpsync.sh&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;%OUTDIR%&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;latex-workshop.view.pdf.viewer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;external&quot;</span><span class="punctuation">,</span> <span class="comment">// we are using SumatraPDF</span></span><br><span class="line">    <span class="attr">&quot;latex-workshop.latex.clean.fileTypes&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="comment">// can be ignored,  default is good enough</span></span><br><span class="line">        <span class="string">&quot;*.aux&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.bbl&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.blg&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.idx&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.ind&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.lof&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.lot&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.out&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.toc&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.acn&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.acr&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.alg&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.glg&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.glo&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.gls&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.ist&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.fls&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.log&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.fdb_latexmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.cpt&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.xml&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;*.bcf&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;latex-workshop.message.error.show&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;latex-workshop.message.warning.show&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;latex-workshop.view.pdf.external.viewer.command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/home/&lt;ur_usrname&gt;/.local/bin/forward.sh&quot;</span><span class="punctuation">,</span> <span class="comment">//utility script</span></span><br><span class="line">    <span class="attr">&quot;latex-workshop.view.pdf.external.viewer.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;%PDF%&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;latex-workshop.view.pdf.external.synctex.command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/home/&lt;ur_usrname&gt;/.local/bin/forward.sh&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;latex-workshop.view.pdf.external.synctex.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;%TEX%&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;%LINE%&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;%PDF%&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;latex-utilities.liveReformat.enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;latex-utilities.message.update.show&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div></li>
+</ol>
+<h2 id="setting-up-symbolic-link-on-windows-filesystem">Setting-up
+Symbolic Link on <strong>Windows Filesystem</strong></h2>
+<p>Most of the complexity of using synctex with WSL has to do with path
+issues. The most salient is with SumatraPDF's default behavior of
+handling WSL paths (adding <code>C:\</code>) as prefix.</p>
+<p>To circumvent this, I did two things.</p>
+<ol type="1">
+<li>Create a symbolic link on Windows filesystem that points to the dir
+that I am working on in WSL.</li>
+<li>Create a script that automatically modified synctex generated files
+at compilation time.</li>
+</ol>
+<ul>
+<li>Reason 1: <code>SumatraPDF</code> would access the pdf using Windows
+path, therefore precluding path issues. The major factor for performance
+is whether <code>Tex Live</code> is installed and compiled on WSL or
+Windows. Therefore, this tweak is acceptable</li>
+<li>Reason 2: The <code>LaTex Workshop</code> plugin makes it handy to
+chain and automate the whole process</li>
+</ul>
+<h3 id="steps">Steps</h3>
+<ol type="1">
+<li>Go to the working directory on WSL</li>
+<li>Get the windows path for this folder <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wslpath -w $(<span class="built_in">pwd</span>) <span class="comment"># this should give the wsl target path in windows</span></span><br></pre></td></tr></table></figure></div></li>
+<li>Open <strong>Commandline Terminal</strong> in admin mode (instead of
+Powershell) <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mklink /d full\path\to\symbolic\link wsl\target\path\in\windows</span><br></pre></td></tr></table></figure></div> In my case, <code>pwd</code> on WSL gives
+<code>/home/&lt;ur_usrname&gt;/tex_notes</code>. I linked
+<code>"C:\Users\&lt;ur_usrname&gt;\Documents\tex_notes"</code> to
+it.</li>
+</ol>
+<h2 id="rpsync.sh-and-forward.sh"><code>rpsync.sh</code> and
+<code>forward.sh</code></h2>
+<p>One thing to mention is that these scripts assume that the symbolic
+links on Windows are created under one common dir, with different links
+pointing to different project dirs on WSL. ### <code>rpsync.sh</code> It
+is obvious that this script automatically patches the paths in
+synctex.gz</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line">win_path=<span class="string">&quot;c:/Users/&lt;ur_usrname&gt;/Documents&quot;</span></span><br><span class="line">now_dir_name=$(<span class="built_in">basename</span> <span class="variable">$1</span>)</span><br><span class="line">win_path=<span class="string">&quot;<span class="variable">$&#123;win_path&#125;</span>/<span class="variable">$&#123;now_dir_name&#125;</span>&quot;</span></span><br><span class="line">rppattern=<span class="string">&quot;s/<span class="variable">$&#123;1//\//\\\/&#125;</span>/<span class="variable">$&#123;win_path//\//\\\/&#125;</span>/g&quot;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$1</span>/*.synctex.gz;<span class="keyword">do</span></span><br><span class="line">    <span class="built_in">cat</span> <span class="variable">$i</span> | gunzip | sed $(<span class="built_in">echo</span> <span class="variable">$rppattern</span>) | gzip &gt; <span class="string">&quot;<span class="variable">$i</span>.tmp&quot;</span> &amp;&amp; <span class="built_in">mv</span> <span class="string">&quot;<span class="variable">$i</span>.tmp&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="forward.sh"><code>forward.sh</code></h3>
+<p>It follows that this script automatically manipulates the paths
+passed in from <code>LaTex Workshop</code> plugin</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="comment"># tex filename, line, pdf filename (for nparam == 3)</span></span><br><span class="line"><span class="comment"># pdf filename (for nparam == 1)</span></span><br><span class="line">sumatra=<span class="string">&quot;&quot;</span> <span class="comment"># put in wsl path of `SumatraPDF.exe` here</span></span><br><span class="line"><span class="comment"># if unsure, you could copy the windows path of sumatra exe in windows File Explorer and use the output of `wslpath WINDOWS_PATH`</span></span><br><span class="line">win_path=<span class="string">&quot;c:/Users/&lt;ur_usrname&gt;/Documents&quot;</span></span><br><span class="line">IFS=<span class="string">&#x27;/&#x27;</span> <span class="built_in">read</span> -a oppath &lt;&lt;&lt; <span class="variable">$1</span></span><br><span class="line">now_dir_name=<span class="string">&quot;<span class="variable">$&#123;oppath[-2]&#125;</span>&quot;</span></span><br><span class="line">win_path=<span class="string">&quot;<span class="variable">$&#123;win_path&#125;</span>/<span class="variable">$&#123;now_dir_name&#125;</span>&quot;</span></span><br><span class="line"><span class="keyword">if</span> (( <span class="variable">$#</span> == <span class="number">3</span> ));<span class="keyword">then</span></span><br><span class="line">    <span class="variable">$sumatra</span> \</span><br><span class="line">        -forward-search <span class="string">&quot;<span class="variable">$&#123;win_path&#125;</span>/<span class="variable">$&#123;1##*/&#125;</span>&quot;</span> \</span><br><span class="line">        <span class="variable">$2</span> \</span><br><span class="line">        -reuse-instance \</span><br><span class="line">        <span class="string">&quot;<span class="variable">$&#123;win_path&#125;</span>/<span class="variable">$&#123;3##*/&#125;</span>&quot;</span> \</span><br><span class="line">        -inverse-search \</span><br><span class="line">        <span class="string">&quot;wsl code -r -g <span class="variable">$&#123;1&#125;</span>:%l&quot;</span> &amp;</span><br><span class="line"><span class="keyword">elif</span> (( <span class="variable">$#</span> == <span class="number">1</span> )); <span class="keyword">then</span></span><br><span class="line">    <span class="variable">$sumatra</span> \</span><br><span class="line">        -reuse-instance \</span><br><span class="line">        <span class="string">&quot;<span class="variable">$&#123;win_path&#125;</span>/<span class="variable">$&#123;1##*/&#125;</span>&quot;</span> \</span><br><span class="line">        -inverse-search \</span><br><span class="line">        <span class="string">&quot;wsl code -r -g <span class="variable">$&#123;1%.*&#125;</span>.tex:%l&quot;</span> &amp;</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="putting-them-in-place">Putting them in place</h3>
+<p>In my case, I put the scripts under <code>$HOME/.local/bin</code>.
+You could choose any location to your heart's content. Remember to
+modify <code>setting.json</code> accordingly</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The main idea is to leave the bulk of the compilation in WSL, and
+automate the rest of the process through lightweight scripts and VSCode
+extension to simulate the env under Windows.</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> Enabling Forward and Backward Search in LaTex with WSL and SumatraPDF</li>
+        <li><strong>Author:</strong> Jay Zhou</li>
+        <li><strong>Created at:</strong> 2023-06-02 10:26:57</li>
+        
+            <li>
+                <strong>Updated at:</strong> 2023-06-19 22:15:15
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://ja1zhou.github.io/2023/06/02/Enabling-Forward-and-Backward-Search-in-LaTex-with-WSL-and-SumatraPDF/
+        </li>
+        <li>
+            <strong>License:</strong> This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/WSL/">#WSL</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/LaTex/">#LaTex</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/SumatraPDF/">#SumatraPDF</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/06/14/Personal-Blog-with-Hexo/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Personal Blog with Hexo</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/06/01/gumbel-softmax/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Gumbel Softmax</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;Comments
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-pjax
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script data-pjax>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '7135543fb75b67abf327',
+                    clientSecret: 'ec2609aaac90af71c6e0e4db8101b41d332907bc',
+                    repo: 'BlogComments',
+                    owner: 'Ja1Zhou',
+                    admin: ['Ja1Zhou'],
+                    id: __gitalk__pathname,
+                    language: 'en'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">Enabling Forward and Backward Search in LaTex with WSL and SumatraPDF</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#versions"><span class="nav-text">Versions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rough-intro-to-setting-up"><span class="nav-text">Rough Intro to Setting-Up</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#installing-tex-live-2023-in-wsl"><span class="nav-text">Installing Tex Live 2023
+in WSL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wsl-vscode-settings.json"><span class="nav-text">WSL VSCode
+settings.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setting-up-symbolic-link-on-windows-filesystem"><span class="nav-text">Setting-up
+Symbolic Link on Windows Filesystem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#steps"><span class="nav-text">Steps</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rpsync.sh-and-forward.sh"><span class="nav-text">rpsync.sh and
+forward.sh</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#forward.sh"><span class="nav-text">forward.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#putting-them-in-place"><span class="nav-text">Putting them in place</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-text">Conclusion</span></a></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+            
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Jay Zhou</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a></span>
+                <br>
+            <span class="theme-version-container">THEME&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.5</a>
+        </div>
+        
+        
+        
+            <div id="start_div" style="display:none">
+                2023/6/01 12:00:00
+            </div>
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/navbarShrink.js"></script>
+
+<script src="/js/tools/scrollTopBottom.js"></script>
+
+<script src="/js/tools/lightDarkSwitch.js"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/tocToggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            Global.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            Global.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            Global.refresh();
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
